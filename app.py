@@ -14,6 +14,7 @@ app = Flask(__name__)
 #App configuration
 app.config.from_pyfile("config.cfg")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URI")
+app.config["SECRET_KEY"] = os.environ.get("APP_SECRET")
 
 #extension initialization
 db.init_app(app)

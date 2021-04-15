@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template,\
+                    request, redirect, flash, url_for
 from models import ShortUrl
 from extensions import db
 import helper
@@ -22,7 +23,8 @@ def shorten():
     item = ShortUrl(_id=_id, url=url)
     db.session.add(item)
     db.session.commit()
-    return _id
+    flash(url_for("main.open", id=_id, _external = True))
+    return redirect(url_for("main.home"))
 
 @main.route("/<id>")
 def open(id):

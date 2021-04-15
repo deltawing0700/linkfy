@@ -16,15 +16,16 @@
           <a class="nav-link" href="#">Shorten</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Api</a>
+          <a class="nav-link" href="{{ url_for('api.home') }}">Api</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 <!-- bootstrap card for shortner -->
-<div class="card text-center text-primary bg-dark rounded-0">
+<div class="card text-center text-primary bg-dark rounded-0 container">
   <div class="card-body">
+
     <h5 class="card-title">Shorten Link</h5>
     <form action="{{ url_for('main.shorten') }}" method="post">
         <div class="mb-3">
@@ -32,6 +33,20 @@
             <input type="submit" value="Shorten" class="btn btn-primary"/>
         </div>
     </form>
+          {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+				<div class="card bg-success text-light">
+					<h5 class="card-header">URL Shortened</h5>
+					<div class="card-body">
+						<h5 class="card-title">{{ message }}</h5>
+						<!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+						<a href="#" class="btn btn-primary">Copy to clipboard</a>
+					</div>
+				</div>
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
   </div>
 </div>
 
