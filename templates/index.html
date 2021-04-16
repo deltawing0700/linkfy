@@ -41,7 +41,7 @@
 					<div class="card-body">
 						<h5 class="card-title">{{ message }}</h5>
 						<!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-						<a href="#" class="btn btn-primary">Copy to clipboard</a>
+						<button class="btn btn-primary" onclick="CopyToClipboard('{{ message }}')">Copy To Clipboard</button>
 					</div>
 				</div>
             {% endfor %}
@@ -51,4 +51,8 @@
 </div>
 
 
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='index.js') }}"></script>
 {% endblock %}
