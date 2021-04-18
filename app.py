@@ -13,14 +13,12 @@ def create_app():
 
     #App configuration
     app.config.from_pyfile("config.cfg")
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URI")
-    app.config["SECRET_KEY"] = os.environ.get("APP_SECRET")
+    app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://rklcrmjh:Llw7JwFCU58fZS9B9wX6zCfcRzieUPrC@rogue.db.elephantsql.com:5432/rklcrmjh"
+    app.config["SECRET_KEY"] = "testestsadxxcv"
 
     #extension initialization
     db.init_app(app)
     # login_manager.init_app(app)
-
-    #db.create_all(app=app)
 
 
     #blueprint registration
